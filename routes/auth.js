@@ -14,4 +14,9 @@ router.get('/linkedin/callback',
     res.redirect('/');
   });
 
+router.get('/logout', function(req,res,next){
+  req.session = null
+  res.redirect('/')
+})
+
 module.exports = router;
