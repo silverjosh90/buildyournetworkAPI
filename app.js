@@ -4,10 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require('cookie-session')
+require('dotenv').load()
+var LinkedInStrategy = require('passport-linkedin').Strategy
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth')
+var passport= require('passport')
 
 var app = express();
 
@@ -22,6 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'secret secret' }))
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+})
 
 app.use('/', routes);
 app.use('/users', users);
