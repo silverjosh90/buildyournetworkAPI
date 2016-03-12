@@ -1,12 +1,13 @@
 var LinkedInStrategy = require('passport-linkedin').Strategy
 var passport = require('passport')
-var knex = require('../db/knex.js')
+var db = require('../data/mongoose.js')
 
 
 passport.use(new LinkedInStrategy({
     consumerKey: process.env.CLIENT_ID,
     consumerSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/linkedin/callback"
+    callbackURL: "http://localhost:3000/auth/linkedin/callback",
+    profileFields: ['id', 'first-name','picture-url', 'last-name', 'email-address', 'headline']
   },
   function(token, tokenSecret, profile, done) {
     console.log(profile);
