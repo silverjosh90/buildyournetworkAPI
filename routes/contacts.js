@@ -25,9 +25,12 @@ apiRouter.route('/')
 
   })
   .delete(function(req,res){
-    Users.find({_id: '56e30f5bbe64c386ee57aba8'}).remove().exec()
-    res.json('user deleted!')
+    Users.find({linkedinID: req.body.linkedinID}).then(function(results){
+      for (var i = 0; i < results.length; i++) {
+        var contact = results[i]
+      }
   })
+})
 
 
 
