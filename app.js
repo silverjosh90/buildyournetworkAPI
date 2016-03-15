@@ -6,11 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('cookie-session')
 require('dotenv').load()
-var LinkedInStrategy = require('passport-linkedin').Strategy
 var contacts = require('./routes/contacts');
 var users = require('./routes/users');
 var auth = require('./routes/auth')
-var passport= require('passport')
 
 var app = express();
 

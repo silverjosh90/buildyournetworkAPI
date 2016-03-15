@@ -1,9 +1,11 @@
 var express = require('express');
-var router = express.Router();
+var apiRouter = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
-module.exports = router;
+apiRouter.route('/')
+  .get(function(req,res){
+    console.log("Hello");
+  })
+
+module.exports = apiRouter;

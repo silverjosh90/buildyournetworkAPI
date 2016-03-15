@@ -6,6 +6,7 @@ var users =  new db.Schema({
   email: String,
   prof_pic: String,
   contacts: [{
+    seq: 0,
     firstname: String,
     lastname: String,
     email: String,
