@@ -4,8 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('cookie-session')
-require('dotenv').load()
+var session = require('cookie-session');
+require('dotenv').load();
 var contacts = require('./routes/contacts');
 var users = require('./routes/users');
 var auth = require('./routes/auth')
