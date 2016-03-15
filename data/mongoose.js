@@ -1,4 +1,19 @@
 var db = require('mongoose');
-db.connect('mongodb://localhost/buildyournetwork');
+require('dotenv').load();
 
-module.exports = db
+
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost/buildyournetwork'
+db.connect(url)
+
+// var development = 'mongodb://localhost/buildyournetwork'
+// var production = process.env.MONGOLAB_URI
+//
+// if (development) {
+//   mongoose.connect(development)
+// }
+//
+// else {
+//   mongoose.connect(production)
+// }
+
+module.exports = db;
