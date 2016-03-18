@@ -13,13 +13,13 @@ apiRouter.route('/')
     })
 
   })
-//   .post(function(req,res){
-//     Users.find({linkedinID: req.body.linkedinID}).then(function(results){
-//       user = results[0]
-//       user.contacts.push(req.body)
-//       res.send('Contact Added!')
-//     })
-//   })
+  // .post(function(req,res){
+  //   Users.find({linkedinID: req.body.linkedinID}).then(function(results){
+  //     user = results[0]
+  //     user.contacts.push(req.body)
+  //     res.send('Contact Added!')
+  //   })
+  // })
 //   .put(function(req,res){
 //
 //
