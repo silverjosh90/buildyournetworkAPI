@@ -22,29 +22,29 @@ apiRouter.route('/')
     })
   })
 
+apiRouter.route('/:linkedinID')
+  .get(function(req,res){
+    Users.find({linkedinID: req.params.linkedinID}).then(function(results){
+      res.json(results)
+    })
+  })
+  .put(function(req,res){
+    Users.update({linkedinID: req.params.linkedinID}, {
+      name: 'Norman Chaco',
+      linkedinID: "18866663032",
+      email: "silverjosh@hotmail.com",
+      prof_pic: "www.xoxo6969.com",
+      contacts: []
+     }).then(function(results){
+      res.json('Successfully updated!')
+    })
+  })
+  .delete(function(req,res){
+    Users.remove({linkedinID: req.params.linkedinID}).then(function(results){
+      res.json('User Deleted')
+    })
+  })
 
-  // var users =  new db.Schema({
-  //   name: String,
-  //   linkedinID: Number,
-  //   email: String,
-  //   prof_pic: String,
-  //   contacts: [{
-  //     seq: 0,
-  //     firstname: String,
-  //     lastname: String,
-  //     email: String,
-  //     Phone: String,
-  //     met: String,
-  //     met_via: String,
-  //     occupation: String,
-  //     skills: [String],
-  //     portfolio: String,
-  //     linkedin: String,
-  //     availability: String,
-  //     notes: String,
-  //   }]
-  //
-  // })
 
 
 

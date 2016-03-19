@@ -37,13 +37,13 @@ apiRouter.route('/')
 
 apiRouter.route('/create')
   .post(function(req,res){
-    console.log("hello");
+
     var newContact = {
       firstname: 'Hilary',
       lastname: 'potato',
       met: 'Doing Human Things'
     }
-Users.update({_id: '56e30bb0c071c1aeed121cf9'}, {$push: {contacts: {firstname: 'hilary', lastname: "silverstein"}}}).then(function(results){
+Users.update({linkedinID: 18866663032}, {$push: {contacts: {firstname: 'hilary', lastname: "silverstein"}}}).then(function(results){
 
 
   // results.contacts.push(newContact)
@@ -53,12 +53,19 @@ Users.update({_id: '56e30bb0c071c1aeed121cf9'}, {$push: {contacts: {firstname: '
 })
 
 // Adds Skill to id
-var Skills = 'req.body.skill'
-var indSkills = Skills.split(',')
 
 // db.users.update({"_id" : ObjectId("56e30bb0c071c1aeed121cf9"), 'contacts':{$elemMatch : {'_id':  ObjectId("56e7495579bdb4b44e5b52cb")}}}, {$push : { 'contacts.$.skills': 'React'}}
-
-Users.update({linkedinID: 3333, 'contacts': {$elemMatch: {'_id' : "56e7495579bdb4b44e5b52cb"}}}, {$push : {'contacts.$.skills' : indSkills}})
+apiRouter.route('/create/skills')
+  .put(function(req,res){
+Users.update({linkedinID: 18866663032, 'contacts': {$elemMatch: {'_id' : "56ec74c9d920ef1c07974bb7"}}}, {$pushAll : {'contacts.$.skills' : 'postgresSQL'}}).then(function(results){
+    res.json('Skills Updated!')
+  })
+})
+  .delete(function(req,res){
+    Users.remove({linkedinID: 18866663032, contacts: {$elemMatch:{_id: '56ec4437a1e296fb05a417a1'}}}).then(function(results){
+      res.json('contact removed!')
+    })
+  })
 
 // Adds
 
